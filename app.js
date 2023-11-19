@@ -61,8 +61,24 @@ function gameOver() {
     gameSeq = [];
     userSeq = [];
     started = false;
-    msg.innerText = `GAME OVER! Your score was ${level}\nPress any key to restart`;
+    msg.innerText = `GAME OVER! Your score was ${level-1}\nPress any key to restart`;
+    showHighScore(level-1);
     level = 0;
+}
+
+let highScore = document.createElement("h3");
+highScore.innerText = "";
+highScore.style.color = "rgb(224, 16, 16)";
+msg.insertAdjacentElement("beforebegin", highScore);
+// high score value
+let hs = 0;
+
+
+function showHighScore(score) {
+    if(score > hs){
+        hs = score;
+        highScore.innerText = `HIGH SCORE: ${hs}`;
+    }
 }
 
 btnContainer.addEventListener("click", function (e) {
