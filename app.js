@@ -4,9 +4,10 @@ let userSeq = [];
 let started = false;
 let level = 0;
 let msg = document.querySelector("#msg");
+let btnContainer = document.querySelector("#btn-container");
 
-document.addEventListener("keydown", function(e){
-    if(started == false) {
+document.addEventListener("keydown", function (e) {
+    if (started == false) {
         console.log("Let's get started!");
         started = true;
         levelUp();
@@ -15,7 +16,7 @@ document.addEventListener("keydown", function(e){
 
 function levelUp() {
     level++;
-    msg.innerText =`Level ${level}`;
+    msg.innerText = `Level ${level}`;
 
     let randIdx = Math.floor(Math.random() * 4);
     flashBtn(colors[randIdx]);
@@ -26,7 +27,32 @@ function flashBtn(color) {
     let btn = document.querySelector(`#${color}`);
     let ogColor = btn.style.color;
     btn.style.backgroundColor = "white";
-    setTimeout(function(){
+    setTimeout(function () {
         btn.style.backgroundColor = ogColor;
     }, 200);
 }
+
+function checkAns() {
+    let idx = userSeq.length - 1;
+    if (userSeq[idx] === gameSeq[idx]) {
+        if (userSeq.length === gameSeq.length) {
+            flashBtn(userSeq[idx]);
+            document.querySelector("body").style.backgroundColor = "rgb(72, 168, 66)";
+            setTimeout(function () {
+                document.querySelector("body").style.backgroundColor = "white";
+            }, 200);
+            userSeq = [];
+            setTimeout(levelUp, 1000);
+        }
+        else {
+            flashBtn(userSeq[idx]);
+        }
+    }
+}
+
+btnContainer.addEventListener("click", function (e) {
+    if (e.target.className == "btn") {
+        userSeq.push(e.target.id);
+        checkAns();
+    }
+})
