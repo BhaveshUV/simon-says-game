@@ -48,10 +48,25 @@ function checkAns() {
             flashBtn(userSeq[idx]);
         }
     }
+    else {
+        gameOver();
+    }
+}
+
+function gameOver() {
+    document.querySelector("body").style.backgroundColor = "rgb(224, 16, 16)";
+    setTimeout(function () {
+        document.querySelector("body").style.backgroundColor = "white";
+    }, 200);
+    gameSeq = [];
+    userSeq = [];
+    started = false;
+    msg.innerText = `GAME OVER! Your score was ${level}\nPress any key to restart`;
+    level = 0;
 }
 
 btnContainer.addEventListener("click", function (e) {
-    if (e.target.className == "btn") {
+    if (e.target.className == "btn" && started === true) {
         userSeq.push(e.target.id);
         checkAns();
     }
