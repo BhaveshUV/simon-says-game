@@ -1,0 +1,36 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+#btn-container {
+    width: 348px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    justify-content: center;
+}
+
+.btn {
+    height: 150px;
+    width: 150px;
+    border: 8px solid black;
+    border-radius: 2rem;
+}
+
+#pink {
+    background-color: #d95980;
+}
+
+#blue {
+    background-color: #63aac0;
+}
+
+#orange{
+    background-color: #f99b45;
+}
+
+#purple {
+    background-color: #819FF9;
+}
