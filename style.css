@@ -3,6 +3,16 @@ body {
     text-align: center;
 }
 
+button {
+    appearance: none;
+    font-size: 1.25rem;
+    background-color: green;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.35rem;
+    margin-top: 2rem;
+}
+
 #btn-container {
     width: 348px;
     margin: 0 auto;

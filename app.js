@@ -5,14 +5,20 @@ let started = false;
 let level = 0;
 let msg = document.querySelector("#msg");
 let btnContainer = document.querySelector("#btn-container");
+let startBtn = document.getElementsByTagName("button");
 
-document.addEventListener("keydown", function (e) {
+startBtn[0].addEventListener("click", startGame);
+
+document.addEventListener("keydown", startGame);
+
+function startGame() {
     if (started == false) {
         console.log("Let's get started!");
         started = true;
         levelUp();
+        startBtn[0].style.display = "none";
     }
-});
+}
 
 function levelUp() {
     level++;
@@ -61,9 +67,11 @@ function gameOver() {
     gameSeq = [];
     userSeq = [];
     started = false;
-    msg.innerText = `GAME OVER! Your score was ${level-1}\nPress any key to restart`;
+    msg.innerText = `GAME OVER! Your score was ${level-1}\n(press any key to restart)`;
     showHighScore(level-1);
     level = 0;
+    startBtn[0].innerText = "Restart";
+    startBtn[0].style.display = "inline";
 }
 
 let highScore = document.createElement("h3");
